@@ -191,4 +191,3 @@ print(table(res$caller[!duplicated(res$call_id)], res$role[!duplicated(res$call_
 
 out_file = file.path(opt$outdir, paste0(opt$sample, "_segments.tsv"))
 write.table(res, out_file, sep = "\t", quote = FALSE, row.names = FALSE)
-message("Written: ", out_file)

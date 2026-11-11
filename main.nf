@@ -10,7 +10,7 @@ params.run_flye    = false
 params.flye_meta   = false
 params.reference   = null
 params.flye_min_overlap = 0.5
-params.svclone_tol = 50
+params.svclone_tol = 300
 
 include { PARSE_CALLS }   from './modules/parse_calls.nf'
 include { CLUSTER_CALLS } from './modules/cluster_calls.nf'

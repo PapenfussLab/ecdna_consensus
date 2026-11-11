@@ -222,7 +222,8 @@ draw_ecdna_cycle = function(calls_df, genes_gr, out_dir = ".", decoil_links = NU
             fp_gr = segs_gr
             fp_gr$col = alpha(style$node_col, 0.5)
             fp_kind = ifelse(grepl("_FAN_", as.character(row$call_id)), "NC", "footprint")
-            fp_track = gTrack(fp_gr, name = paste0(short_caller, " ", fp_kind))
+            fp_feature = sub("^amplicon([0-9]+)_", "amp\\1 ", strsplit(as.character(row$call_id), "\\|")[[1]][3])
+            fp_track = gTrack(fp_gr, name = paste0(short_caller, " ", fp_kind, "\n", fp_feature))
             formatting(fp_track)$height = 24
             formatting(fp_track)$ygap   = 20
             amp_tracks[[k]] = fp_track
