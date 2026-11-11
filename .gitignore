@@ -1,0 +1,13 @@
+nextflow
+.nextflow*
+work/
+results/
+*.log
+
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+*.swp
+*~

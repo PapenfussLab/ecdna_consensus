@@ -1,0 +1,30 @@
+name: ecdna_consensus
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base>=4.3
+  - r-optparse
+  - r-dplyr
+  - r-readr
+  - r-stringr
+  - r-scales
+  - r-remotes
+  - r-biocmanager
+  - r-data.table
+  - r-igraph
+  - r-matrix
+  - r-jsonlite
+  - r-r6
+  - bioconductor-genomicranges
+  - bioconductor-iranges
+  - bioconductor-s4vectors
+  - bioconductor-rtracklayer
+  - bioconductor-rsamtools
+  - bioconductor-variantannotation
+  - samtools
+  - minimap2
+  - flye
+  - c-compiler
+  - cxx-compiler
+  - fortran-compiler
