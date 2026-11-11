@@ -19,11 +19,11 @@ CSV with a header row. Every column except `sample_name` is optional. Leave a ce
 |---|---|---|
 | sample_name | yes | Sample name |
 | aa_profiles | no | AmpliconClassifier amplicon classification profiles table |
-| aa_beds | no | AmpliconClassifier feature interval BEDs  |
-| aa_cycles | no | AmpliconClassifier annotated cycles files (AmpliconSuite) |
-| coral_profiles | no | AmpliconClassifier 2.0 amplicon classification profiles table (CoRAL) |
-| coral_beds | no | AmpliconClassifier 2.0 ecDNA and FAN feature interval BEDs (CoRAL)|
-| coral_cycles | no | AmpliconClassifier 2.0 annotated cycles files (CoRAL)  |
+| aa_beds | no | AmpliconClassifier feature interval BEDs. File pattern |
+| aa_cycles | no | AmpliconClassifier annotated cycles files (AmpliconSuite). File pattern |
+| coral_profiles | no | AmpliconClassifier 2.0 amplicon classification profiles table (CoRAL). Path or file pattern |
+| coral_beds | no | AmpliconClassifier 2.0 ecDNA and FAN feature interval BEDs (CoRAL). File pattern |
+| coral_cycles | no | AmpliconClassifier 2.0 annotated cycles files (CoRAL). File pattern |
 | decoil_bed | no | Decoil `reconstruct.ecDNA.bed` |
 | decoil_links | no | Decoil `reconstruct.links.txt`. Without it the Decoil edges are not drawn |
 | svclone_file | no | SVclone output. Enables the SVclone junction step and plot for the sample |
@@ -33,8 +33,16 @@ CSV with a header row. Every column except `sample_name` is optional. Leave a ce
 
 ```csv
 sample_name,aa_profiles,aa_beds,aa_cycles,coral_profiles,coral_beds,coral_cycles,decoil_bed,decoil_links,svclone_file,bam
-S1,/p/aa/S1_amplicon_classification_profiles.tsv,/p/aa/S1_amplicon*_ecDNA_*_intervals.bed,/p/aa/S1_amplicon*_annotated_cycles.txt,/p/coral/S1/*_amplicon_classification_profiles.tsv,/p/coral/S1/*_classification_bed_files/*_intervals.bed,/p/coral/S1/*_annotated_cycles_files/*_annotated_cycles.txt,/p/decoil/S1/reconstruct.ecDNA.bed,/p/decoil/S1/reconstruct.links.txt,,
+sample1,/path/to/aa/sample1_amplicon_classification_profiles.tsv,/path/to/aa/sample1_amplicon*_*_intervals.bed,/path/to/aa/sample1_amplicon*_annotated_cycles.txt,/path/to/coral/sample1/*_amplicon_classification_profiles.tsv,/path/to/coral/sample1/*_classification_bed_files/*_intervals.bed,/path/to/coral/sample1/*_annotated_cycles_files/*_annotated_cycles.txt,/path/to/decoil/sample1/reconstruct.ecDNA.bed,/path/to/decoil/sample1/reconstruct.links.txt,/path/to/svclone/sample1.tsv,/path/to/bam/sample1.bam
+sample2,,,,/path/to/coral/sample2/*_amplicon_classification_profiles.tsv,/path/to/coral/sample2/*_classification_bed_files/*_intervals.bed,/path/to/coral/sample2/*_annotated_cycles_files/*_annotated_cycles.txt,/path/to/decoil/sample2/reconstruct.ecDNA.bed,/path/to/decoil/sample2/reconstruct.links.txt,,
 ```
+
+**File patterns.** Columns marked "pattern" can point to several files at once. Write the path with `*` standing for any text, and the pipeline uses every file that matches. For example,
+
+`/path/to/aa/sample1_amplicon*_*_intervals.bed`
+
+matches `sample1_amplicon1_ecDNA_1_intervals.bed`, `sample1_amplicon2_FAN_1_intervals.bed`, and so on. A pattern can also be a single exact file name. To check a pattern before running, paste it after `ls` in the terminal, which lists the files it matches. If it matches nothing, the pipeline stops and names the sample and column.
+
 
 ## Usage
 

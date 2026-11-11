@@ -130,7 +130,7 @@ load_classified_calls = function(sample, caller, tag, prof_file, bed_dir, cycles
 }
 
 load_aa_calls = function(sample, prof_file, bed_dir, cycles_dir) {
-  load_classified_calls(sample, "AmpliconArchitect", "AA", prof_file, bed_dir, cycles_dir)
+  load_classified_calls(sample, "AmpliconArchitect", "AA", prof_file, bed_dir, cycles_dir, classes = c("ecDNA", "FAN"))
 }
 
 load_coral_calls = function(sample, prof_file, bed_dir, cycles_dir) {
